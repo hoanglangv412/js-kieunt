@@ -1,57 +1,117 @@
 ﻿@model js_kieunt.Models.Blog
 
 @{
-    ViewBag.Title = "ShowAllBlogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+    function searchURL() {
+        var search = document.getElementById("txtsearch").value;
+        window.location = "SearchDataByName/" + search;
+    }
+</script>
+<h2>ListBlogs</h2>
 
-<h2>ShowAllBlogs</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kieu_Blog_Manager</title>
+   
+</head>
+<body>
+    <br />
+    <input type="text" id="txtsearch" name="EmployeeAccount_Emp_Login" placeholder="Tieu de" />
+    <input type="button" value="search" onclick="searchURL()"/>
+    <br />
+    <div class="container-fluid">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Tin
+                </th>
+                <th>
+                    Loại
+                </th>
+                <th>
+                    Trạng thái
+                </th>
+                <th>
+                    Vị trí
+                </th>
+                <th>
+                    Ngày public
+                </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Delete
+                </th>
+            </tr>
+            @foreach (var item in Model.ListBlogs)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogPostedDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditBlog", new { id = item.BlogID }, new { @class = "btn btn-link" })
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BlogName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BlogType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BlogStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BlogAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BlogPostedDate)
-        </th>
-        <th></th>
-    </tr>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.BlogID }, new { @class = "btn btn-link" })
 
-@foreach (var item in Model.ListBlogs) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BlogName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BlogType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BlogStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BlogAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BlogPostedDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BlogID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BlogID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BlogID })
-        </td>
-    </tr>
-}
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.BlogID }, new { @class = "btn btn-outline-danger" }@*,new {onclick = "return confirm('Are you sure to delete this blog?')"}*@)
+            </td>
+        </tr>
+            }
+        </table>
+        @if (TempData["InsertResult"] != null)
+        {
+            <script type="text/javascript">
 
-</table>
+                alert("Record Is Inserted Successfully");
+            </script>
+
+        }
+        @if (TempData["UpdateResult"] != null)
+        {
+            <script type="text/javascript">
+
+                alert("Record Is Updated Successfully");
+            </script>
+
+        }
+        @if (TempData["DeleteResult"] != null)
+        {
+            <script type="text/javascript">
+
+                alert("Record Is Deleted Successfully");
+            </script>
+
+        }
+    </div>
+</body>
+</html>
+

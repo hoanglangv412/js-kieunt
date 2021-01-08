@@ -1,0 +1,82 @@
+﻿@model js_kieunt.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Blog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogPostedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogPostedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogShortDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogShortDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogPhoto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BlogID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

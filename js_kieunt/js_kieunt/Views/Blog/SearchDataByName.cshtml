@@ -1,0 +1,67 @@
+﻿@model js_kieunt.Models.Blog
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SearchDataByName</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogPostedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogShortDetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogDetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogPhoto)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.ListBlogs)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogPostedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogShortDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogPhoto)
+            </td>
+        </tr>
+    }
+
+</table>

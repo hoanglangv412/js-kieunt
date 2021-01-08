@@ -47,7 +47,6 @@ namespace MVC4crud.Controllers
         [HttpGet]
         public ActionResult Details(string ID)
         {
-            Customer objCustomer = new Customer();
             DataAccessLayer objDB = new DataAccessLayer();
             return View(objDB.SelectDatabyID(ID));
         }
