@@ -1,0 +1,57 @@
+﻿@model js_kieunt.Models.Blog
+
+@{
+    ViewBag.Title = "ShowAllBlogs";
+}
+
+<h2>ShowAllBlogs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogPostedDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ListBlogs) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogPostedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BlogID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BlogID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BlogID })
+        </td>
+    </tr>
+}
+
+</table>
