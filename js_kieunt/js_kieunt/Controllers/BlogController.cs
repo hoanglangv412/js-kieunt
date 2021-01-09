@@ -11,6 +11,7 @@ namespace js_kieunt.Controllers
 {
     public class BlogController : Controller
     {
+        //hien thi toan bo blog
         [HttpGet]
         public ActionResult ShowAllBlogs()
         {
@@ -20,6 +21,7 @@ namespace js_kieunt.Controllers
             return View(objBlog);
         }
 
+        //hien thi man hinh tim kiem
         [HttpGet]
         public ActionResult SearchScreen()
         {
@@ -28,6 +30,8 @@ namespace js_kieunt.Controllers
             objBlog.ListBlogs = dal.Selectalldata();
             return View(objBlog);
         }
+
+        //hien thi man hinh tim kiem blog theo ten
         [HttpGet]
         public ActionResult SearchDataByName(string ID)
         {
@@ -37,19 +41,14 @@ namespace js_kieunt.Controllers
             return View(objBlog);
         }
 
-        [HttpGet]
-        public ActionResult Details(string ID)
-        {
-            DataAccessLayer dal = new DataAccessLayer();
-            return View(dal.SelectDataById(ID));
-        }
-
+        //hien thi man them blog
         [HttpGet]
         public ActionResult InsertBlog()
         {
             return View();
         }
 
+        //chuc nang them blog
         [HttpPost]
         public ActionResult InsertBlog(Blog newBlogObj)
         {
@@ -69,6 +68,7 @@ namespace js_kieunt.Controllers
             }
         }
 
+        //hien thi man hinh sua blog
         [HttpGet]
         public ActionResult EditBlog(string ID)
         {
@@ -76,6 +76,8 @@ namespace js_kieunt.Controllers
             DataAccessLayer dal = new DataAccessLayer();
             return View(dal.SelectDataById(ID));
         }
+
+        //chuc nang xoa blog
         [HttpGet]
         public ActionResult Delete(string id)
         {
@@ -85,6 +87,8 @@ namespace js_kieunt.Controllers
             ModelState.Clear();
             return RedirectToAction("ShowAllBlogs");
         }
+
+        //chuc nang sua blog
         [HttpPost]
         public ActionResult EditBlog(Blog blobj)
         {

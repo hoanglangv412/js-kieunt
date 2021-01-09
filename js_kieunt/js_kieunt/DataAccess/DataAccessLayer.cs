@@ -11,6 +11,7 @@ namespace js_kieunt.DataAccess
 {
     public class DataAccessLayer
     {
+        //lay toan bo blog
         public List<Blog> Selectalldata()
         {
             SqlConnection conn = null;
@@ -50,6 +51,8 @@ namespace js_kieunt.DataAccess
             }
             return listBlog;
         }
+
+        //them blog
         public string Insertdata(Blog BlogObj)
         {
             SqlConnection conn = null;
@@ -84,6 +87,8 @@ namespace js_kieunt.DataAccess
                 conn.Close();
             }
         }
+
+        //cap nhat blog
         public string Updatedata(Blog BlogObj)
         {
             SqlConnection conn = null;
@@ -118,6 +123,8 @@ namespace js_kieunt.DataAccess
                 conn.Close();
             }
         }
+
+        //lay 1 blog
         public Blog SelectDataById(string BlogId)
         {
             SqlConnection conn = null;
@@ -167,6 +174,8 @@ namespace js_kieunt.DataAccess
                 conn.Close();
             }
         }
+
+        //tim blog theo ten
         public List<Blog> SearchDataByName(string BlogName)
         {
             SqlConnection conn = null;
@@ -217,6 +226,8 @@ namespace js_kieunt.DataAccess
                 conn.Close();
             }
         }
+
+        //xoa blog
         public int DeleteData(String ID)
         {
             SqlConnection con = null;

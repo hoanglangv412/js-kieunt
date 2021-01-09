@@ -169,7 +169,6 @@
     <Content Include="Views\Blog\EditBlog.cshtml" />
     <Content Include="Views\Blog\InsertBlog.cshtml" />
     <Content Include="Views\Blog\SearchDataByName.cshtml" />
-    <Content Include="Views\Blog\Details.cshtml" />
     <Content Include="Views\Blog\SearchScreen.cshtml" />
   </ItemGroup>
   <ItemGroup>
