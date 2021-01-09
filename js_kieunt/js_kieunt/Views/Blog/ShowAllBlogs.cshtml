@@ -3,12 +3,6 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script>
-    function searchURL() {
-        var search = document.getElementById("txtsearch").value;
-        window.location = "SearchDataByName/" + search;
-    }
-</script>
 <h2>ListBlogs</h2>
 
 <!DOCTYPE html>
@@ -20,9 +14,6 @@
    
 </head>
 <body>
-    <br />
-    <input type="text" id="txtsearch" name="EmployeeAccount_Emp_Login" placeholder="Tieu de" />
-    <input type="button" value="search" onclick="searchURL()"/>
     <br />
     <div class="container-fluid">
         <table class="table table-bordered">
@@ -75,10 +66,6 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditBlog", new { id = item.BlogID }, new { @class = "btn btn-link" })
-
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.BlogID }, new { @class = "btn btn-link" })
 
             </td>
             <td>

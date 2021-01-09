@@ -65,7 +65,7 @@ namespace js_kieunt.DataAccess
                 cmd.Parameters.AddWithValue("@BlogType", BlogObj.BlogType);
                 cmd.Parameters.AddWithValue("@BlogStatus", BlogObj.BlogStatus);
                 cmd.Parameters.AddWithValue("@BlogAddress", BlogObj.BlogAddress);
-                cmd.Parameters.AddWithValue("@BlogPostedDate", BlogObj.BlogPostedDate);
+                cmd.Parameters.AddWithValue("@BlogPostedDate", DateTime.Now.ToString());
                 cmd.Parameters.AddWithValue("@BlogShortDetail", BlogObj.BlogShortDetail);
                 cmd.Parameters.AddWithValue("@BlogDetail", BlogObj.BlogDetail);
                 cmd.Parameters.AddWithValue("@BlogPhoto", BlogObj.BlogPhoto);
@@ -99,7 +99,7 @@ namespace js_kieunt.DataAccess
                 cmd.Parameters.AddWithValue("@BlogType", BlogObj.BlogType);
                 cmd.Parameters.AddWithValue("@BlogStatus", BlogObj.BlogStatus);
                 cmd.Parameters.AddWithValue("@BlogAddress", BlogObj.BlogAddress);
-                cmd.Parameters.AddWithValue("@BlogPostedDate", BlogObj.BlogPostedDate);
+                cmd.Parameters.AddWithValue("@BlogPostedDate", DateTime.Now.ToString());
                 cmd.Parameters.AddWithValue("@BlogShortDetail", BlogObj.BlogShortDetail);
                 cmd.Parameters.AddWithValue("@BlogDetail", BlogObj.BlogDetail);
                 cmd.Parameters.AddWithValue("@BlogPhoto", BlogObj.BlogPhoto);
@@ -171,7 +171,8 @@ namespace js_kieunt.DataAccess
         {
             SqlConnection conn = null;
             DataSet ds = null;
-            List<Blog> listBlog = null;
+            Blog foundBlog = null;
+            List<Blog> listFoundBlog = new List<Blog>() ;
             try
             {
                 conn = new SqlConnection(ConfigurationManager.ConnectionStrings["BlogManager"].ToString());
@@ -193,7 +194,7 @@ namespace js_kieunt.DataAccess
                 da.Fill(ds);
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
-                    Blog foundBlog = new Blog();
+                    foundBlog = new Blog();
                     foundBlog.BlogID = Convert.ToInt32(ds.Tables[0].Rows[i]["BlogID"].ToString());
                     foundBlog.BlogName = ds.Tables[0].Rows[i]["BlogName"].ToString();
                     foundBlog.BlogType = ds.Tables[0].Rows[i]["BlogType"].ToString();
@@ -203,14 +204,13 @@ namespace js_kieunt.DataAccess
                     foundBlog.BlogShortDetail = ds.Tables[0].Rows[i]["BlogShortDetail"].ToString();
                     foundBlog.BlogDetail = ds.Tables[0].Rows[i]["BlogDetail"].ToString();
                     foundBlog.BlogPhoto = ds.Tables[0].Rows[i]["BlogPhoto"].ToString();
-                    listBlog.Add(foundBlog);
+                    listFoundBlog.Add(foundBlog);        
                 }
-                return listBlog;
+                return listFoundBlog;
             }
             catch (Exception)
             {
-
-                return listBlog = null;
+                return listFoundBlog = null;
             }
             finally
             {

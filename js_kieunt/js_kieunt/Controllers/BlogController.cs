@@ -2,6 +2,7 @@
 using js_kieunt.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,13 +21,29 @@ namespace js_kieunt.Controllers
         }
 
         [HttpGet]
-        public ActionResult SearchDataByName(string name)
+        public ActionResult SearchScreen()
+        {
+            Blog objBlog = new Blog();
+            DataAccessLayer dal = new DataAccessLayer();
+            objBlog.ListBlogs = dal.Selectalldata();
+            return View(objBlog);
+        }
+        [HttpGet]
+        public ActionResult SearchDataByName(string ID)
         {
             DataAccessLayer dal = new DataAccessLayer();
-            Blog Blogobj = new Blog();
-            Blogobj.ListBlogs = dal.SearchDataByName(name);
-            return View(Blogobj);
+            Blog objBlog = new Blog();
+            objBlog.ListBlogs = dal.SearchDataByName(ID);
+            return View(objBlog);
         }
+
+        [HttpGet]
+        public ActionResult Details(string ID)
+        {
+            DataAccessLayer dal = new DataAccessLayer();
+            return View(dal.SelectDataById(ID));
+        }
+
         [HttpGet]
         public ActionResult InsertBlog()
         {
@@ -50,13 +67,6 @@ namespace js_kieunt.Controllers
                 ModelState.AddModelError("", "Error in saving data to table");
                 return View();
             }
-        }
-        [HttpGet]
-        public ActionResult Details(string ID)
-        {
-            Blog BlogObj = new Blog();
-            DataAccessLayer dal = new DataAccessLayer();
-            return View(dal.SelectDataById(ID));
         }
 
         [HttpGet]
