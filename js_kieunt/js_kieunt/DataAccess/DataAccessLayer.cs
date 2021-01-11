@@ -11,7 +11,11 @@ namespace js_kieunt.DataAccess
 {
     public class DataAccessLayer
     {
-        //lay toan bo blog
+        #region Selectalldata
+        /// <summary>
+        /// Lay toan bo blog
+        /// </summary>
+        /// <returns value="List<Blog>" name="listBlog"></returns>
         public List<Blog> Selectalldata()
         {
             SqlConnection conn = null;
@@ -46,14 +50,20 @@ namespace js_kieunt.DataAccess
                 cobj.BlogStatus = ds.Tables[0].Rows[i]["BlogStatus"].ToString();
                 cobj.BlogAddress = ds.Tables[0].Rows[i]["BlogAddress"].ToString();
                 cobj.BlogPostedDate = Convert.ToDateTime(ds.Tables[0].Rows[i]["BlogPostedDate"].ToString());
-
                 listBlog.Add(cobj);
             }
+
             return listBlog;
         }
+        #endregion Selectalldata
 
-        //them blog
-        public string Insertdata(Blog BlogObj)
+        #region InsertData
+        /// <summary>
+        /// Them vao 1 blog
+        /// </summary>
+        /// <param name="BlogObj" value="Blog"></param>
+        /// <returns name="result" value="string"></returns>
+        public string Insertdata (Blog BlogObj)
         {
             SqlConnection conn = null;
             String result = "";
@@ -75,6 +85,7 @@ namespace js_kieunt.DataAccess
                 cmd.Parameters.AddWithValue("@Query", 1);
                 conn.Open();
                 result = cmd.ExecuteScalar().ToString();
+
                 return result;
             }
             catch (Exception)
@@ -87,9 +98,15 @@ namespace js_kieunt.DataAccess
                 conn.Close();
             }
         }
+        #endregion InsertData
 
-        //cap nhat blog
-        public string Updatedata(Blog BlogObj)
+        #region Updatedata
+        /// <summary>
+        /// Cap nhat du lieu 1 blog
+        /// </summary>
+        /// <param name="BlogObj" value="Blog"></param>
+        /// <returns name="result" value="string"></returns>
+        public string Updatedata (Blog BlogObj)
         {
             SqlConnection conn = null;
             String result = "";
@@ -111,6 +128,7 @@ namespace js_kieunt.DataAccess
                 cmd.Parameters.AddWithValue("@Query", 2);
                 conn.Open();
                 result = cmd.ExecuteScalar().ToString();
+
                 return result;
             }
             catch (Exception)
@@ -123,9 +141,15 @@ namespace js_kieunt.DataAccess
                 conn.Close();
             }
         }
+        #endregion Updatedata
 
-        //lay 1 blog
-        public Blog SelectDataById(string BlogId)
+        #region SelectDataById
+        /// <summary>
+        /// Lay ra 1 blog
+        /// </summary>
+        /// <param name="BlogId" value="string"></param>
+        /// <returns name="foundBlog" value="Blog"></returns>
+        public Blog SelectDataById (string BlogId)
         {
             SqlConnection conn = null;
             Blog foundBlog = null;
@@ -162,6 +186,7 @@ namespace js_kieunt.DataAccess
                     foundBlog.BlogDetail = ds.Tables[0].Rows[i]["BlogDetail"].ToString();
                     foundBlog.BlogPhoto = ds.Tables[0].Rows[i]["BlogPhoto"].ToString();
                 }
+
                 return foundBlog;
             }
             catch (Exception)
@@ -174,9 +199,15 @@ namespace js_kieunt.DataAccess
                 conn.Close();
             }
         }
+        #endregion SelectDataById
 
-        //tim blog theo ten
-        public List<Blog> SearchDataByName(string BlogName)
+        #region SearchDataByName
+        /// <summary>
+        /// Tim blog theo ten
+        /// </summary>
+        /// <param name="BlogName" value="string"></param>
+        /// <returns name="listFoundBlog" value="List<Blog>"></returns>
+        public List<Blog> SearchDataByName (string BlogName)
         {
             SqlConnection conn = null;
             DataSet ds = null;
@@ -215,10 +246,12 @@ namespace js_kieunt.DataAccess
                     foundBlog.BlogPhoto = ds.Tables[0].Rows[i]["BlogPhoto"].ToString();
                     listFoundBlog.Add(foundBlog);        
                 }
+
                 return listFoundBlog;
             }
             catch (Exception)
             {
+
                 return listFoundBlog = null;
             }
             finally
@@ -226,9 +259,15 @@ namespace js_kieunt.DataAccess
                 conn.Close();
             }
         }
+        #endregion SearchDataByName
 
-        //xoa blog
-        public int DeleteData(String ID)
+        #region DeleteData
+        /// <summary>
+        /// Xoa 1 blog
+        /// </summary>
+        /// <param name="ID" value="string"></param>
+        /// <returns name="result" value="int"></returns>
+        public int DeleteData (String ID)
         {
             SqlConnection con = null;
             int result;
@@ -249,10 +288,12 @@ namespace js_kieunt.DataAccess
                 cmd.Parameters.AddWithValue("@Query", 3);
                 con.Open();
                 result = cmd.ExecuteNonQuery();
+
                 return result;
             }
             catch
             {
+
                 return result = 0;
             }
             finally
@@ -260,5 +301,6 @@ namespace js_kieunt.DataAccess
                 con.Close();
             }
         }
+        #endregion DeleteData
     }
 }

@@ -166,10 +166,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Blog\ShowAllBlogs.cshtml" />
-    <Content Include="Views\Blog\EditBlog.cshtml" />
-    <Content Include="Views\Blog\InsertBlog.cshtml" />
     <Content Include="Views\Blog\SearchDataByName.cshtml" />
     <Content Include="Views\Blog\SearchScreen.cshtml" />
+    <Content Include="Views\Blog\createEditBlog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
