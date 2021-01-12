@@ -1,5 +1,4 @@
 ﻿@model js_kieunt.Models.Blog
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -68,7 +67,7 @@
                 @Html.ActionLink("Edit", "createEditBlog", new { id = item.BlogID }, new { @class = "btn btn-link" })
             </td>
             <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.BlogID }, new { @class = "btn btn-outline-danger" })
+                @Html.ActionLink("Delete", "Delete", new { ID = item.BlogID }, new { @class = "btn btn-outline-danger" })
             </td>
         </tr>
             }

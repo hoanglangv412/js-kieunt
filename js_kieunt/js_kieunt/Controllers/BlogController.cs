@@ -95,8 +95,10 @@ namespace js_kieunt.Controllers
             }
             else
             {
+                Blog blogObj = new Blog();
+                blogObj.BlogID = 0;
 
-                return View();
+                return View(blogObj);
             }
         }
         #endregion createEditBlog
@@ -108,7 +110,7 @@ namespace js_kieunt.Controllers
         /// <param name="blobj" value="blobj"></param>
         /// <returns>Quay ve man hinh hien thi toan bo blog</returns>
         [HttpPost]
-        public ActionResult createEditBlog(Blog blobj)
+        public ActionResult createEditBlog(Blog blobj, FormCollection form)
         {
             if (blobj.BlogID > 0)
             {
@@ -131,7 +133,6 @@ namespace js_kieunt.Controllers
             }
             else
             {
-                blobj.BlogID = 0;
                 blobj.BlogPostedDate = Convert.ToDateTime(DateTime.Now.ToString());
                 if (ModelState.IsValid)
                 {
@@ -150,6 +151,7 @@ namespace js_kieunt.Controllers
                 }
             }
             #endregion createEditBlog
+
         }
     }
 }
