@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script language="javascript">
+        // Basic
+        function check(p){
+            if(p%2==0) alert('chan');
+            else alert('le');
+        }
+        function sum(a,b){
+            return a+b;
+        }
+        function showMessage(message){
+            message = message || 'ahihihihihihihihi';
+            return message;
+        }
+        function checkYear(year){
+            if(year%100 != 0 && year % 4 == 0){
+                return true;
+            }
+            else if(year%100 == 0 && year %400 == 0){
+                return true;
+            }
+            return false;
+        }
+        function checkDate(num){
+            switch(num%2){
+                case 0:
+                    alert('chan');
+                case 1:
+                    alert('le');
+            }
+        }
+        var con = 'kieu dai ca kakakakakaka';
+        console.log(con);
+        var num = prompt("So bang may?","");
+        checkDate(num);
+
+        setTimeout(check(2020),3000);
+        //setInterval(check(2020),3000);
+    </script>
+</body>
+</html>

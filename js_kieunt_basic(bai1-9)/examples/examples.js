@@ -1,0 +1,3 @@
+function onAlert(){
+    alert("hihihihihi");
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script language="javascript">
+        function checkNum() {
+            for (var i = 0; i < 10; i++) {
+                if (i < 5) alert('be');
+                else alert('to');
+            }
+        }
+        function checkNumWhile() {
+            var i = 0;
+            // Vòng lặp ngoài
+            while (i <= 9) {
+                // Mỗi lần lặp gan j = 0;
+                var j = 0;
+
+                // Lặp nếu j < <=
+                while (j <= 9) {
+                    // In ra màn hình
+                    document.write('[' + i + '][' + j + '] ');
+
+                    // Tăng j lên nếu không sẽ bị lặp vô hạn
+                    j++;
+                }
+                // Xuống hàng
+                document.write('<br/>');
+
+                //Tăng i lên nếu không sẽ bị lặp vô hạn
+                i++;
+            }
+        }
+        function checkNumDoWhile() {
+            do {
+                alert(1);
+            }
+            while (false);
+        }
+        function checkForWithBreak() {
+            for (var i = 1; i <= 10; i++) {
+                document.write(i + " - ");
+                if (i == 5) {
+                    document.write("Vòng lặp bị dừng");
+                    break;
+                }
+            }
+        }
+        function checkNumDoWhile() {
+            do {
+                alert(1);
+            }
+            while (false);
+        }
+    </script>
+    <button type="button" onclick="checkNum()">checkNumsmallethan10ByFor</button>
+    <button type="button" onclick="checkNumWhile()">checkNumsmallethan10ByWhile</button>
+    <button type="button" onclick="checkNumDoWhile()">checkNumsmallethan10ByWhile</button>
+    <button type="button" onclick="checkForWithBreak()">CheckBreak</button>
+</body>
+
+</html>
