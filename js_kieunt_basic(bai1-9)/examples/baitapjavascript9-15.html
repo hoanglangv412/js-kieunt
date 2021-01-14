@@ -1,27 +1,29 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         const productList = [
-            {id: 1, name: 'kiem', categoryId: 2, safeDate: '2002-11-20', quality: 5, isDelete: false},
-            {id: 2, name: 'kiem1', categoryId: 3, safeDate: '2002-11-20', quality: 5, isDelete: false},
-            {id: 3, name: 'kiem2', categoryId: 4, safeDate: '2022-11-20', quality: 5, isDelete: false},
-            {id: 4, name: 'kiem3', categoryId: 2, safeDate: '2002-11-20', quality: -5, isDelete: true},
-            {id: 5, name: 'kiem4', categoryId: 3, safeDate: '2002-11-20', quality: 5, isDelete: false},
-            {id: 6, name: 'kiem5', categoryId: 4, safeDate: '2002-11-20', quality: -5, isDelete: false},
-            {id: 7, name: 'kiem6', categoryId: 2, safeDate: '2002-11-20', quality: 5, isDelete: true},
-            {id: 8, name: 'kiem7', categoryId: 3, safeDate: '2002-11-20', quality: -5, isDelete: false},
-            {id: 9, name: 'kiem8', categoryId: 4, safeDate: '2002-11-20', quality: 5, isDelete: false},
-            {id: 9, name: 'kiem9', categoryId: 2, safeDate: '2002-11-20', quality: 5, isDelete: false},
+            { id: 1, name: 'kiem', categoryId: 2, safeDate: '2002-11-20', quality: 5, isDelete: false },
+            { id: 2, name: 'kiem1', categoryId: 3, safeDate: '2002-11-20', quality: 5, isDelete: false },
+            { id: 3, name: 'kiem2', categoryId: 4, safeDate: '2022-11-20', quality: 5, isDelete: false },
+            { id: 4, name: 'kiem3', categoryId: 2, safeDate: '2002-11-20', quality: -5, isDelete: true },
+            { id: 5, name: 'kiem4', categoryId: 3, safeDate: '2002-11-20', quality: 5, isDelete: false },
+            { id: 6, name: 'kiem5', categoryId: 4, safeDate: '2002-11-20', quality: -5, isDelete: false },
+            { id: 7, name: 'kiem6', categoryId: 2, safeDate: '2002-11-20', quality: 5, isDelete: true },
+            { id: 8, name: 'kiem7', categoryId: 3, safeDate: '2002-11-20', quality: -5, isDelete: false },
+            { id: 9, name: 'kiem8', categoryId: 4, safeDate: '2002-11-20', quality: 5, isDelete: false },
+            { id: 9, name: 'kiem9', categoryId: 2, safeDate: '2002-11-20', quality: 5, isDelete: false },
         ]
 
-        class Product{
-            constructor(properties){
+        class Product {
+            constructor(properties) {
                 this.id = properties.id;
                 this.name = properties.name;
                 this.categoryId = properties.categoryId;
@@ -30,150 +32,227 @@
                 this.isDelete = properties.isDelete;
             }
         }
-        
-        function createListbai10New(){
+        //#region createListbai10New;
+        /**
+        * @summary: tao product list moi
+        * @return products-Array;
+        */
+        function createListbai10New() {
             const products = [];
             productList.forEach(product => {
                 products.push(new Product(product))
             });
             return products;
         }
+        //#endregion createListbai10New;
         console.log(createListbai10New());
-
-
-        function filterProductByIdEs6(listProduct,id){
+        //#region filterProductByIdEs6;
+        /**
+        * @summary: tim product theo id su dung es6
+        * @params: listProduct(Array) and id(int)
+        * @return products(Product);
+        */
+        function filterProductByIdEs6(listProduct, id) {
             var name = null;
             listProduct.forEach(element => {
-                if(element.id == id){
+                if (element.id == id) {
                     name = element.name;
                 }
             });
             return name;
         }
-
-        function filterProductByIdFor(listProduct,id){
+        //#endregion filterProductByIdEs6;
+        //#region filterProductByIdFor;
+        /**
+        * @summary: tim product theo id su dung for
+        * @params: listProduct(Array) and id(int)
+        * @return products(Product);
+        */
+        function filterProductByIdFor(listProduct, id) {
             var name = null;
-            for(var i=0;i<listProduct.length;i++){
-                if(listProduct[i].id == id){
-                   name = listProduct[i].name;
+            for (var i = 0; i < listProduct.length; i++) {
+                if (listProduct[i].id == id) {
+                    name = listProduct[i].name;
                 }
             }
             return name;
         }
-        console.log('bai11es6',filterProductByIdEs6(createListbai10New(),2));
-        console.log('bai11for',filterProductByIdFor(createListbai10New(),2));
-
-        function  filterProductByQualityEs6(listProduct){
+        //#endregion filterProductByIdFor;
+        console.log('bai11es6', filterProductByIdEs6(createListbai10New(), 2));
+        console.log('bai11for', filterProductByIdFor(createListbai10New(), 2));
+        //#region filterProductByQualityEs6;
+        /**
+         * @summary : tim product bang quality su dung es6
+         * @param: listProduct(Array)
+         * @return products(Array)
+         */
+        function filterProductByQualityEs6(listProduct) {
             var products = [];
             listProduct.forEach(element => {
-                if(element.quality > 0 && element.isDelete==false){
+                if (element.quality > 0 && element.isDelete == false) {
                     products.push(element);
                 }
             });
             return products;
         }
-        function filterProductByQualityFor(listProduct){
+        //#endregion filterProductByQualityEs6;
+        //#region filterProductByQualityFor
+        /**
+         * @summary: tim product qua quality su dung for
+         * @param: listProduct(Array)
+         * @return products(Array)
+         */
+        function filterProductByQualityFor(listProduct) {
             var products = [];
-            for(var i=0;i<listProduct.length;i++){
-                if(listProduct[i].quality > 0 && listProduct[i].isDelete==false){
+            for (var i = 0; i < listProduct.length; i++) {
+                if (listProduct[i].quality > 0 && listProduct[i].isDelete == false) {
                     products.push(listProduct[i]);
                 }
             }
             return products;
         }
-
-        console.log('bai12es6',filterProductByQualityEs6(createListbai10New()));
-        console.log('bai12for',filterProductByQualityFor(createListbai10New()));
-
-        function filterProductBySaleDateEs6(listProduct){
+        //#endregion filterProductByQualityFor
+        console.log('bai12es6', filterProductByQualityEs6(createListbai10New()));
+        console.log('bai12for', filterProductByQualityFor(createListbai10New()));
+        //#region filterProductBySaleDateEs6
+        /**
+         * @summary: tim product bang ngay sale su dung es6
+         * @param: listProduct(Array)
+         * @return: products(Array)
+         */
+        function filterProductBySaleDateEs6(listProduct) {
             var products = [];
             var datum = Date.parse(new Date());
             listProduct.forEach(element => {
-                if(Date.parse(element.safeDate) > datum && element.isDelete==false){
+                if (Date.parse(element.safeDate) > datum && element.isDelete == false) {
                     products.push(element);
                 }
             });
             return products;
         }
-
-        function filterProductBySaleDateFor(listProduct){
+        //#endregion filterProductBySaleDateEs6
+        //#region filterProductBySaleDateFor
+        /**
+         * @summary: tim product bang ngay sale su dung for
+         * @param: listProduct(Array)
+         * @return: products(Array)
+         */
+        function filterProductBySaleDateFor(listProduct) {
             var products = [];
             var datum = Date.parse(new Date());
-            for(var i=0;i<listProduct.length;i++){
-                if(Date.parse(listProduct[i].safeDate) > datum && listProduct[i].isDelete==false){
+            for (var i = 0; i < listProduct.length; i++) {
+                if (Date.parse(listProduct[i].safeDate) > datum && listProduct[i].isDelete == false) {
                     products.push(listProduct[i]);
                 }
             }
             return products;
         }
-
-        console.log('bai13es6',filterProductBySaleDateEs6(createListbai10New()));
-
-        console.log('bai13for',filterProductBySaleDateFor(createListbai10New()));
-
-        function totalProductReduce(listPro){
+        //#endregion filterProductBySaleDateFor
+        console.log('bai13es6', filterProductBySaleDateEs6(createListbai10New()));
+        console.log('bai13for', filterProductBySaleDateFor(createListbai10New()));
+        //#region totalProductReduce
+        /**
+         * @summary: tinh tong quality product chua xoa su dung reduce
+         * @param: listPro(Array)
+         * @return: tong quality(int)
+         */
+        function totalProductReduce(listPro) {
             var listProduct = [];
             const reducer = (accumulator, currentValue) => accumulator + currentValue;
             listPro.forEach(element => {
-                if(element.isDelete == false) listProduct.push(element.quality);
+                if (element.isDelete == false) listProduct.push(element.quality);
             });
             return listProduct.reduce(reducer);
         }
-        function totalProductFor(listPro){
+        //#endregion totalProductReduce
+        //#region totalProductFor
+        /**
+         * @summary: tinh tong quality product chua xoa khong su dung reduce
+         * @param: listPro(Array)
+         * @return: tong quality(int)
+         */
+        function totalProductFor(listPro) {
             var listProduct = [];
             var final = 0;
             listPro.forEach(element => {
-                if(element.isDelete == false) final += element.quality;
+                if (element.isDelete == false) final += element.quality;
             });
             return final;
         }
-        console.log('bai14',totalProductReduce(createListbai10New()));
-        console.log('bai14noReduce',totalProductFor(createListbai10New()));
-
-        function isHaveProductInCategory(listProduct, categoryId){
+        //#endregion totalProductFor
+        console.log('bai14', totalProductReduce(createListbai10New()));
+        console.log('bai14noReduce', totalProductFor(createListbai10New()));
+        //#region isHaveProductInCategory
+        /**
+         * @summary: kiem tra co product trong danh sach su dung es6
+         * @param: listProduct(Array), categoryId(int)
+         * @return: bool
+         */
+        function isHaveProductInCategory(listProduct, categoryId) {
             var bool = false;
             listProduct.forEach(element => {
-                if(element.categoryId == categoryId) bool = true;
+                if (element.categoryId == categoryId) bool = true;
             });
             return bool;
         }
-        function isHaveProductInCategoryFor(listProduct, categoryId){
+        //#endregion isHaveProductInCategory
+        //#region isHaveProductInCategoryFor
+        /**
+         * @summary: kiem tra co product trong danh sach su dung for
+         * @param: listProduct(Array), categoryId(int)
+         * @return: bool
+         */
+        function isHaveProductInCategoryFor(listProduct, categoryId) {
             var bool = false;
-            for(var i=0;i<listProduct.length;i++){
-                if(listProduct[i].categoryId == categoryId){
+            for (var i = 0; i < listProduct.length; i++) {
+                if (listProduct[i].categoryId == categoryId) {
                     bool = true;
                 }
             }
             return bool;
         }
-        console.log('bai15es6',isHaveProductInCategory(createListbai10New(),4));
-        console.log('bai15for',isHaveProductInCategoryFor(createListbai10New(),4));
-
-        function findProductBySaleDate(listProduct){
+        //#endregion isHaveProductInCategoryFor
+        console.log('bai15es6', isHaveProductInCategory(createListbai10New(), 4));
+        console.log('bai15for', isHaveProductInCategoryFor(createListbai10New(), 4));
+        //#region findProductBySaleDate
+        /**
+         * @summary: tim product thong qua ngay sale > hien tai su dung es6
+         * @param:listProduct(Array)
+         * @return arr(Array)
+         */
+        function findProductBySaleDate(listProduct) {
             var arr = [];
             listProduct.forEach(element => {
-                if(Date.parse(element.safeDate) > Date.parse(new Date()) && element.quality > 0){
-                    console.log('bai16es6',Date.parse(element.safeDate));
-                    console.log('bai16es6',Date.parse(new Date()));
-                    arr.push(new Product({id:element.id,name:element.name}));
+                if (Date.parse(element.safeDate) > Date.parse(new Date()) && element.quality > 0) {
+                    console.log('bai16es6', Date.parse(element.safeDate));
+                    console.log('bai16es6', Date.parse(new Date()));
+                    arr.push(new Product({ id: element.id, name: element.name }));
                 }
             });
             return arr;
         }
-
-        function findProductBySaleDateFor(listProduct){
+        //#endregion findProductBySaleDate
+        //#region findProductBySaleDateFor
+        /**
+         * @summary: tim product thong qua ngay sale > hien tai su dung es6
+         * @param:listProduct(Array)
+         * @return arr(Array)
+         */
+        function findProductBySaleDateFor(listProduct) {
             var arr = [];
-            for(var i=0;i<listProduct.length;i++){
-                if(Date.parse(listProduct[i].safeDate) > Date.parse(new Date()) && listProduct[i].quality > 0){
-                    console.log('bai16es6',Date.parse(listProduct[i].safeDate));
-                    console.log('bai16es6',Date.parse(new Date()));
-                    arr.push(new Product({id:listProduct[i].id,name:listProduct[i].name}));
+            for (var i = 0; i < listProduct.length; i++) {
+                if (Date.parse(listProduct[i].safeDate) > Date.parse(new Date()) && listProduct[i].quality > 0) {
+                    console.log('bai16es6', Date.parse(listProduct[i].safeDate));
+                    console.log('bai16es6', Date.parse(new Date()));
+                    arr.push(new Product({ id: listProduct[i].id, name: listProduct[i].name }));
                 }
             }
             return arr;
         }
-        console.log('bai16es6',findProductBySaleDate(createListbai10New()));
-        console.log('bai16for',findProductBySaleDateFor(createListbai10New()));
+        //#endregion findProductBySaleDateFor
+        console.log('bai16es6', findProductBySaleDate(createListbai10New()));
+        console.log('bai16for', findProductBySaleDateFor(createListbai10New()));
     </script>
 </body>
+
 </html>
