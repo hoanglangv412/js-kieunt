@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="blog.js" text="text/javascript"></script>
@@ -15,7 +16,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <title>Document</title>
 </head>
@@ -31,13 +31,13 @@
                     <div class="form-group row">
                         <label for="id" class="col-sm-3 col-form-label">id</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control search-box" id="id" data-column-index='0'>
+                            <input type="text" class="form-control search-box" id="id">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control search-box" id="name" data-column-index='1'>
+                            <input type="text" class="form-control search-box" id="name">
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
         </div>
         <div class="table-result">
             <div class="button-group">
-                <input type="button" value="search" id="search" />
+                <input type="button" id="btnsearch" class="btn btn-danger"/>
                 <input type="button" value="clear" id="clear" />
                 <input type="button" value="save" id="save" />
             </div>
@@ -181,8 +181,6 @@
         $('#datatable').on('click', 'tr', function () {
             if ($(this).hasClass('selected')) {
                 $(this).removeClass('selected');
-
-
             } else {
                 table.$('tr.selected').removeClass('selected');
                 $(this).addClass('selected');
@@ -199,12 +197,29 @@
         $('#clear').on('click', function () {
             $('#id').val('');
             $('#name').val('');
-        })
+        });
         //save
         $('#save').on('click', function () {
             var data = table.rows().data();
             console.log(data);
-        })
+        });
+        function search_table(value) {
+            $('#datatable tbody tr').each(function () {
+                var found = 'false';
+                if($(this).find("td:nth-child(2)").html().toLowerCase().indexOf(value.toLowerCase())>=0){
+                    found = 'true';
+                }
+                if (found == 'true') {
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+            });
+        }
+        $('#btnsearch').on('click',function () {
+            search_table($('#name').val());
+        });
     });
 
 </script>
