@@ -1,41 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-
-/* global */
-html,h1,h2,h3,h4,h5,h6,a{
-    font-family: "Raleway";
-   }
-.header{
-    background-color: #1e1e6b;
-    height: 110px;
-    text-align: center;
-    width: 80%;
-    margin: 0 auto;
-}
-.header h2{
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8%;
+    background-color: #030338;
     color: white;
-    padding-top: 2%;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.search{
-    margin: 0 auto;
-    margin-top: 2%;
-    width: 80%;
-}
-.search .container{
-    margin: 0 auto;
-    width: 60%;
-    margin-top: 10px;
-}
-.detail{
-    margin: 0 auto;
-    margin-top: 2%;
-    width: 80%;
-}
-.detail .container-fluid{
-    height: 200px;
-}
-.table-result{
-    margin: 0 auto;
-    margin-top: 2%;
-    width: 80%;
-}
+    text-align: center;
+ }
+ .footer button{
+    background-color: #030338;
+    height: 80%;
+    color: white;
+    padding-bottom: 30px;
+    width: 8%;
+    margin-top: 5px;
+    border: 1px solid white;
+    border-radius: 10px;
+ }
+ .footer button:hover{
+    border-radius: 10px;
+    width: 9%;
+    height: 71%;
+ }
