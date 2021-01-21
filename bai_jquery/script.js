@@ -1,6 +1,6 @@
 var table = null;
 $(document).ready(function () {
-  //load Datatable
+  //#region  loadTable
   table = $('#datatable').DataTable({
     columnDefs: [{
       targets: [0, 1, 3, 6], type: "dom-text", render: function (data, type, row, meta) {
@@ -42,9 +42,12 @@ $(document).ready(function () {
       { "data": "null" }
     ]
   });
-  //End load Datatable
+  //#endregion  loadTable
 
-  //select row to detail
+  //#region selectRowToDetail
+  /**
+   * @summary chon row va in ra detail
+   */
   $('#datatable').on('click', 'tr', function () {
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
@@ -60,23 +63,33 @@ $(document).ready(function () {
       $(".extn").val(data.extn);
     }
   });
-  //end select row to detail
+  //#endregion selectRowToDetail
 });
 
-//delete function
+//#region deleteFunction
+/**
+ * @summary xoa row
+ */
 function deleteFunction() {
-    $('#btndelete').closest("tr").remove();
+  $('#btndelete').closest("tr").remove();
 }
-//end delete function
+//#endregion deleteFunction
 
-//save function
+//#region saveFunction
+/**
+ * @summary luu toan bo table va in ra console log
+ */
 function saveFunction() {
   var data = table.rows().data();
   console.log(data);
 }
-//end save function
+//#endregion saveFunction
 
-//combobox position function
+//#region createSelectPosition
+/**
+ * @summary tao combobox position
+ * @param {*} selItem 
+ */
 function createSelectPosition(selItem) {
   var sel = "<select class='form-control'>";
   $.each(dataJson.positions, function () {
@@ -88,9 +101,14 @@ function createSelectPosition(selItem) {
   sel += "</select>";
   return sel;
 }
-//end combobox position function
+//#endregion createSelectPosition
 
-//combobox office function
+//#region createSelectOffice
+/**
+ * @summary tao combobox office
+ * @param {*} selItem 
+ * 
+ */
 function createSelectOffice(selItem) {
   var sel = "<select class='form-control'>";
   $.each(dataJson.offices, function () {
@@ -100,45 +118,49 @@ function createSelectOffice(selItem) {
     else sel += "<option  value = '" + this.id + "' >" + this.name + "</option>";
   });
   sel += "</select>";
+
   return sel;
 }
-//end combobox office function
+//#endregion createSelectOffice
 
-
-//clear function
+//#region clearFunction
+/**
+ * @summary: reload page 
+ * */
 function clearFunction() {
   location.reload();
 }
-//end clear function
+//#endregion clearFunction
 
-//search function
+//#region searchFunction
+/**
+ * @summary: chuc nang search theo ten va id
+ * @return: man hinh search duoc
+ */
 function searchFunction() {
   var valueId = $('#id').val();
   var valueName = $('#name').val();
   $('#datatable tbody tr').each(function () {
-    var found = 'false';
+    var found = false;
     if ((valueId.length > 0) && (valueName.length > 0)) {
       if (($(this).find("td:nth-child(2)").html().toLowerCase().indexOf(valueName.toLowerCase()) >= 0)
         && ($(this).find("td:first-child").html().indexOf(valueId) >= 0)) {
-        found = 'true';
+        $(this).show();
       }
+      else $(this).hide();
     }
     else if ((valueId.length == 0) && (valueName.length > 0)) {
       if (($(this).find("td:nth-child(2)").html().toLowerCase().indexOf(valueName.toLowerCase()) >= 0)) {
-        found = 'true';
+        $(this).show();
       }
+      else $(this).hide();
     }
     else if ((valueId.length > 0) && (valueName.length == 0)) {
       if ($(this).find("td:first-child").html().indexOf(valueId) > 0) {
-        found = 'true';
+        $(this).show();
       }
-    }
-    if (found == 'true') {
-      $(this).show();
-    }
-    else {
-      $(this).hide();
+      else $(this).hide();
     }
   })
 }
-  //end search function
+//#endregion searchFunction
